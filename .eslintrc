@@ -1,0 +1,27 @@
+{
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true,
+      "modules": true
+    }
+  },
+  "plugins": ["react"],
+  "extends": ["eslint:recommended", "plugin:react/recommended"],
+  "settings": {
+    "react": {
+      "version": "16.6.0"
+    }
+  },
+  "globals": {
+    "jest": false,
+    "beforeEach": false,
+    "afterEach": false,
+    "describe": false,
+    "expect": false,
+    "it": false,
+    "fetch": false,
+    "window": false,
+    "document": false
+  }
+}
