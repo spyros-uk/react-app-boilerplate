@@ -13,6 +13,9 @@
       "version": "16.6.0"
     }
   },
+  "rules": {
+    "semi": "off"
+  },
   "globals": {
     "jest": false,
     "beforeEach": false,
