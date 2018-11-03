@@ -7,8 +7,9 @@
   "keywords": [],
   "license": "ISC",
   "scripts": {
-    "build": "webpack",
-    "start": "webpack-dev-server",
+    "clean": "rm -rf www",
+    "build": "npm run clean && webpack --mode=production",
+    "start": "npm run clean && webpack --mode=development && webpack-dev-server --mode=development",
     "test": "jest",
     "test:watch": "jest --watch",
     "lint": "eslint src/",
