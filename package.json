@@ -1,9 +1,8 @@
 {
-  "name": "react-app-custom",
+  "name": "react-app-boilerplate",
   "version": "1.0.0",
   "description": "React app base",
   "author": "Spyros Papaioannou",
-  "main": "./src/index.js",
   "keywords": [],
   "license": "ISC",
   "scripts": {
