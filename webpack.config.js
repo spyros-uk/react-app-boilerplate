@@ -1,14 +1,25 @@
 const path = require("path")
 const webpack = require("webpack")
 const HtmlWebpackPlugin = require("html-webpack-plugin")
+const CleanWebpackPlugin = require("clean-webpack-plugin")
+const UglifyJsPlugin = require("uglifyjs-webpack-plugin")
+const args = getArgs()
+
+const SETTINGS = {
+  PROD_PATH: path.join(__dirname, "www"),
+  DEV_PATH: path.join(__dirname, "src"),
+  MODE: args.mode || "production",
+  DEV_TOOL: this.MODE === "development" ? "source-maps" : false
+}
 
 module.exports = {
-  context: path.join(__dirname, "src"),
+  mode: SETTINGS.MODE,
+  devtool: SETTINGS.DEV_TOOL,
+  context: SETTINGS.DEV_PATH,
   entry: ["./index.js"],
   output: {
-    path: path.join(__dirname, "www"),
-    filename: "bundle.js",
-    publicPath: "www"
+    path: SETTINGS.PROD_PATH,
+    filename: "bundle.js"
   },
   module: {
     rules: [
@@ -22,22 +33,26 @@ module.exports = {
     ]
   },
   plugins: [
+    new webpack.optimize.OccurrenceOrderPlugin(),
+    new CleanWebpackPlugin([SETTINGS.PROD_PATH], { verbose: true }),
     new HtmlWebpackPlugin({
       template: "index.html"
-    }),
-    new webpack.HotModuleReplacementPlugin()
+    })
   ],
-  resolve: {
-    modules: [path.join(__dirname, "node_modules")],
-    extensions: [".js", ".jsx"]
+  optimization: {
+    minimizer: [new UglifyJsPlugin()]
+  },
+  performance: {
+    hints: "warning"
+  },
+  devServer: {
+    port: 9000
   }
 }
 
-module.exports.devServer = {
-  contentBase: path.join(__dirname, "./www"),
-  compress: true,
-  hot: true,
-  port: 9000
+function getArgs() {
+  return process.argv.slice(2).reduce((args, arg) => {
+    const [key, value] = arg.replace("--", "").split("=")
+    return { ...args, [key]: value }
+  }, {})
 }
-
-module.exports.devtool = "inline-source-map"
