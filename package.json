@@ -34,7 +34,6 @@
     "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "^10.0.1",
     "babel-loader": "^8.0.4",
-    "babel-plugin-styled-components": "^1.8.0",
     "clean-webpack-plugin": "^0.1.19",
     "enzyme": "^3.7.0",
     "enzyme-adapter-react-16": "^1.6.0",
@@ -50,8 +49,8 @@
   },
   "dependencies": {
     "@babel/polyfill": "^7.0.0",
+    "emotion": "^9.2.12",
     "react": "^16.6.1",
-    "react-dom": "^16.6.0",
-    "styled-components": "^4.0.3"
+    "react-dom": "^16.6.0"
   }
 }
