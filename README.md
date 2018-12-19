@@ -1,4 +1,7 @@
 # React App Boilerplate
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/spyros-uk/react-app-boilerplate.svg)](https://greenkeeper.io/)
+
 Installs React and adds tools to help with development and testing.<br>
 Uses babel and webpack to enhance browser compatibility and bundle the app.
 
