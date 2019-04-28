@@ -34,7 +34,7 @@ module.exports = {
   },
   plugins: [
     new webpack.optimize.OccurrenceOrderPlugin(),
-    new CleanWebpackPlugin([SETTINGS.PROD_PATH], { verbose: true }),
+    new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: "index.html"
     })
